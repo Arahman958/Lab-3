@@ -19,41 +19,44 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
 module schematic1(
-    input A,
-    input B,
-    input C,
-    input D,
-    input E,
-    input F,
-    output J,
-    output K
+	input A,
+	input B,
+	input C,
+	input D,
+	input F,
+	input E,
+	output J,
+	output K
 );
 
-wire X1, X2, X3, X4, X5, X6, X7, X8;
+wire X6, X7, X8, X13, X31, X32, X33, X34, X39, X55, X58;
 
-not U1 (X1, B);
 
-not U2 (X2, C);
+not U6 (X6,B);
 
-not U3 (X3, D);
+not U7 (X7,C);
 
-not U4 (X4, E);
+not U8 (X8,D);
 
-not U5 (X5, F);
+and U13 (X13,A, X6, X7, X8);
 
-//J
-and U6 (X6, A, X1, X2, X3);
+or U18 (J,F, X13);
 
-or U7 (J, F, X6);
+not U31 (X31,C);
 
-//K 
+not U32 (X32,D);
 
-or U8 (X7, A, B, C, X3, X4, X5);
+not U33 (X33,E);
 
-or U9 (X8, A, X1, C, D, E);
+not U34 (X34,F);
 
-and U10 (K, X7, X8);
+or U39 (X39,A, B, X31, X32, X33, X34);
+
+not U55 (X55,B);
+
+or U58 (X58,A, X55, C, D, E);
+
+and U66 (K,X39, X58);
 
 endmodule
